@@ -91,6 +91,19 @@
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.4.2</version>
         </plugin>
+        
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.4.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>com.einovice.App</mainClass>  <!-- Replace with your actual main class -->
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+        
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>3.1.2</version>
