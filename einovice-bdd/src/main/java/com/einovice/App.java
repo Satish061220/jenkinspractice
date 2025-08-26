@@ -10,7 +10,7 @@ public class App {
             "src/test/resources/features"
         };
 
-        // Run Cucumber
+        // Run Cucumber style
         byte exitStatus = Main.run(cucumberOptions, Thread.currentThread().getContextClassLoader());
 
         // Exit with the appropriate status
