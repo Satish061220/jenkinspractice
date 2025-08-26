@@ -9,7 +9,7 @@ public class LoginPage {
     @FindBy(id = "exampleInputEmail1")
     private WebElement usernameInput;
 
-    @FindBy(id = "exampleInputPassword1") //passwword
+    @FindBy(id = "exampleInputPassword1") 
     private WebElement passwordInput;
     
     @FindBy(id = "exampleInputDomain1")
