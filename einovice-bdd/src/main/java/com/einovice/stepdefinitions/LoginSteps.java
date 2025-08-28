@@ -17,7 +17,7 @@ public class LoginSteps {
     @Given("the user is on the login page")
     public void userOnLoginPage() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();	
         loginPage = new LoginPage(driver);
         loginPage.open();
     }
