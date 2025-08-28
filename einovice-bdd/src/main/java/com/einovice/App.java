@@ -5,10 +5,10 @@ import io.cucumber.core.cli.Main;
 public class App {
     public static void main(String[] args) {
         // Arguments to run Cucumber CLI
-        String[] cucumberOptions = new String[] {
-            "--glue", "com.einovice.stepdefinitions",
-            "classpath:features"
-        };
+    	String[] cucumberOptions = new String[] {
+    		    "--glue", "com.einovice.stepdefinitions",
+    		    "src/test/resources/features"
+    		};
         
         
         
