@@ -7,10 +7,10 @@ public class App {
         // Arguments to run Cucumber CLI
         String[] cucumberOptions = new String[] {
             "--glue", "com.einovice.stepdefinitions",
-            "src/test/resources/features"
+            "classpath:features"
         };
 
-        // Run Cucumber style get back to previous
+        // Run Cucumber
         byte exitStatus = Main.run(cucumberOptions, Thread.currentThread().getContextClassLoader());
 
         // Exit with the appropriate status
