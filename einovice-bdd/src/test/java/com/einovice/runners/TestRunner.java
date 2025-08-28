@@ -7,10 +7,17 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
+/*@CucumberOptions(
 		  features = "classpath:features",
 		  glue     = "com.einovice.stepdefinitions",
 		  plugin   = {"pretty","html:target/cucumber-report.html"}//this is plugin related to cucumber
-		)
+		)*/
 
+
+
+@CucumberOptions(
+		  features = "src/test/resources/features",
+		  glue     = "com.einovice.stepdefinitions",
+		  plugin   = {"pretty","html:target/cucumber-report.html"}
+		)
 public class TestRunner { }
