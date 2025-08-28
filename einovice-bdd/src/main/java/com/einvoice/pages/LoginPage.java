@@ -1,4 +1,4 @@
-package com.einovice.pages;
+package com.einvoice.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;

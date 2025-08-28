@@ -1,10 +1,13 @@
-package com.einovice.stepdefinitions;
-
-
-import com.einovice.pages.LoginPage;
-import io.cucumber.java.en.*;
-import org.openqa.selenium.*;
+package com.stepdefinitions;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.einvoice.pages.LoginPage;
+
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class LoginSteps {
     private WebDriver driver;
