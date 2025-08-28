@@ -1,10 +1,12 @@
+
+
 package com.einovice;
 
 import io.cucumber.core.cli.Main;
 
 public class App {
     public static void main(String[] args) {
-        // Corrected arguments to run Cucumber CLI
+        // Point to the classpath for main/resources/features
         String[] cucumberOptions = new String[] {
             "--glue", "com.einovice.stepdefinitions",
             "classpath:features"
@@ -14,3 +16,4 @@ public class App {
         System.exit(exitStatus);
     }
 }
+
