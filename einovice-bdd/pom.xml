@@ -76,6 +76,15 @@
             </includes>
         </resource>
     </resources>-->
+    <resources>
+  <resource>
+    <directory>src/test/resources</directory>
+    <includes>
+      <include>**/*.feature</include>
+    </includes>
+  </resource>
+</resources>
+
     <testResources>
     <testResource>
         <directory>src/test/resources</directory>
