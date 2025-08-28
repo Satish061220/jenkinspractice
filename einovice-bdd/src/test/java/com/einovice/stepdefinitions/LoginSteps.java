@@ -1,4 +1,4 @@
-package com.stepdefinitions;
+package stepdefinitions;
 import com.einvoice.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
