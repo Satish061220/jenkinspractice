@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/features", // consistent with Maven and Jenkins
+    features = "src/main/resources/features", // consistent with Maven and Jenkins
     glue = "com.einovice.stepdefinitions",
     plugin = {
         "pretty",
