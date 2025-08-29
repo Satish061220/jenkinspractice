@@ -104,6 +104,13 @@
           </archive>
         </configuration>
       </plugin>
+      
+      <plugin>
+  <groupId>io.cucumber</groupId>
+  <artifactId>cucumber-reporting</artifactId>
+  <version>5.7.0</version> <!-- or your version -->
+</plugin>
+
 
       <!-- Shade plugin to create fat jar -->
       <plugin>
