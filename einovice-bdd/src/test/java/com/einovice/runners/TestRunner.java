@@ -30,13 +30,13 @@ public class TestRunner {
         "pretty",
         "html:target/cucumber-report.html",
         "json:target/cucumber.json",
-        "junit:target/cucumber.xml",
-        "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"   // ✅ Add this line
+        "junit:target/cucumber.xml"
     },
     monochrome = true
 )
 public class TestRunner {
 }
+
 
 /*
  * import io.cucumber.junit.Cucumber; import io.cucumber.junit.CucumberOptions;
