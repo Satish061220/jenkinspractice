@@ -53,13 +53,12 @@ pipeline {
             }
         }
 
-        // ✅ NEW STAGE TO PUBLISH CUCUMBER REPORT
         stage('Run Cucumber Tests') {
             steps {
                 echo "Running Cucumber tests from shaded JAR..."
                 dir("${env.PROJECT_DIR}\\target") {
                     withEnv(["CUCUMBER_PUBLISH_ENABLED=true"]) {
-                        bat 'java -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
+                        bat '"C:\\Program Files\\Java\\jdk-21.0.7\\bin\\java.exe" -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
                     }
                 }
             }
