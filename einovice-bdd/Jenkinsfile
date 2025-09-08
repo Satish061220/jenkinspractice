@@ -65,6 +65,28 @@ stage('Run Cucumber Tests') {
 }
 
 
+stage('Publish Cucumber Reports') {
+    steps {
+        echo 'Publishing Cucumber reports...'
+        dir("${env.PROJECT_DIR}") {
+            // Archive the reports for Jenkins to keep
+            archiveArtifacts artifacts: 'target/cucumber-report.html, target/cucumber.json, target/cucumber.xml', fingerprint: true
+
+            // Publish the HTML report (requires Jenkins HTML Publisher plugin)
+            publishHTML(target: [
+                reportDir: 'target',
+                reportFiles: 'cucumber-report.html',
+                reportName: 'Cucumber Report',
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: false
+            ])
+        }
+    }
+}
+
+
+
         stage('Deploy') {
             steps {
                 echo "Deploying application..."
