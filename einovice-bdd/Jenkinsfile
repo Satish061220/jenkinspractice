@@ -53,53 +53,15 @@ pipeline {
             }
         }
 
-stage('Run Cucumber Tests') {
-    steps {
-        echo "Running Cucumber tests from shaded JAR..."
-        dir("${env.PROJECT_DIR}\\target") {
-            withEnv(["CUCUMBER_PUBLISH_ENABLED=true"]) {
-                bat '"C:\\Program Files\\Java\\jdk-21\\bin\\java.exe" -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
-            }
-        }
-    }
-}
-
-
-stage('Publish Cucumber Reports') {
-    steps {
-        echo 'Publishing Cucumber reports...'
-        dir("${env.PROJECT_DIR}") {
-            // Archive the reports for Jenkins to keep
-            archiveArtifacts artifacts: 'target/cucumber-report.html, target/cucumber.json, target/cucumber.xml', fingerprint: true
-
-            // Publish the HTML report (requires Jenkins HTML Publisher plugin)
-            publishHTML(target: [
-                reportDir: 'target',
-                reportFiles: 'cucumber-report.html',
-                reportName: 'Cucumber Report',
-                keepAll: true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: false
-            ])
-        }
-    }
-}
-
-
-
-        stage('Deploy') {
+        stage('Run Cucumber Tests') {
             steps {
-                echo "Deploying application..."
-                // Add your deployment steps here
+                echo "Running Cucumber tests from shaded JAR..."
+                dir("${env.PROJECT_DIR}\\target") {
+                    withEnv(["CUCUMBER_PUBLISH_ENABLED=true"]) {
+                        bat '"C:\\Program Files\\Java\\jdk-21\\bin\\java.exe" -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
+                    }
+                }
             }
         }
 
-        // Optional cleanup stage
-        // stage('Clean Up') {
-        //     steps {
-        //         echo "Cleaning workspace..."
-        //         deleteDir()
-        //     }
-        // }
-    }
-}
+        sta
