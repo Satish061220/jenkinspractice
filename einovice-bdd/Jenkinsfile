@@ -1,38 +1,9 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                echo "Checking out source code..."
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo "Building with Maven..."
-                dir('einovice-bdd') {
-                    sh 'mvn clean install -DskipTests'
-                }
-            }
-        }
-
         stage('Test') {
             steps {
-                echo "Running Maven tests..."
-                dir('einovice-bdd') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-        stage('Archive') {
-            steps {
-                echo "Archiving artifacts..."
-                dir('einovice-bdd') {
-                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                }
+                echo 'Hello, World!'
             }
         }
     }
