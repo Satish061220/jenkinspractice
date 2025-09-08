@@ -70,7 +70,7 @@ stage('Publish Cucumber Reports') {
         echo 'Publishing Cucumber reports...'
         dir("${env.PROJECT_DIR}") {
             // Archive the reports for Jenkins to keep
-            archiveArtifacts artifacts: 'einovice-bdd/target/cucumber-report.html, target/cucumber.json, target/cucumber.xml', fingerprint: true
+            archiveArtifacts artifacts: 'target/cucumber-report.html, target/cucumber.json, target/cucumber.xml', fingerprint: true
 
             // Publish the HTML report (requires Jenkins HTML Publisher plugin)
             publishHTML(target: [
