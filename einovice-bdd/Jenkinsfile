@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo "Building with Maven..."
                 dir("${env.PROJECT_DIR}") {
-                    sh 'mvn clean install -DskipTests'
+                    sh 'mvn clean install'  // No skipping tests here as per your second script
                 }
             }
         }
