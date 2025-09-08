@@ -1,9 +1,17 @@
 pipeline {
     agent any
+
     stages {
-        stage('Test') {
+        stage('Check File Path') {
             steps {
-                echo 'Hello, World!'
+                script {
+                    def path = 'einovice-bdd/Jenkinsfile'
+                    if (fileExists(path)) {
+                        echo "Path exists: ${path}"
+                    } else {
+                        echo "Path does not exist: ${path}"
+                    }
+                }
             }
         }
     }
