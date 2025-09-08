@@ -57,3 +57,44 @@ pipeline {
             steps {
                 echo "Running Cucumber tests from shaded JAR..."
                 dir("${env.PROJECT_DIR}\\target") {
+                    withEnv(["CUCUMBER_PUBLISH_ENABLED=true"]) {
+                        bat '"C:\\Program Files\\Java\\jdk-21\\bin\\java.exe" -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
+                    }
+                }
+            }
+        }
+
+        stage('Publish Cucumber Reports') {
+            steps {
+                echo 'Publishing Cucumber reports...'
+                dir("${env.PROJECT_DIR}") {
+                    archiveArtifacts artifacts: 'target/cucumber-report.html, target/cucumber.json, target/cucumber.xml', fingerprint: true
+
+                    publishHTML(target: [
+                        reportDir: 'target',
+                        reportFiles: 'cucumber-report.html',
+                        reportName: 'Cucumber Report',
+                        keepAll: true,
+                        alwaysLinkToLastBuild: true,
+                        allowMissing: false
+                    ])
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying application..."
+                // Add your deployment steps here
+            }
+        }
+
+        // Optional cleanup stage
+        // stage('Clean Up') {
+        //     steps {
+        //         echo "Cleaning workspace..."
+        //         deleteDir()
+        //     }
+        // }
+    }
+}  
