@@ -16,7 +16,7 @@ pipeline {
         stage('Validate Jenkinsfile') {
             steps {
                 script {
-                    def jenkinsfilePath = "${env.PROJECT_DIR}/Jenkinsfile"
+                    def jenkinsfilePath = "${env.PROJECT_DIR}\\Jenkinsfile"
                     if (fileExists(jenkinsfilePath)) {
                         echo "Jenkinsfile exists at: ${jenkinsfilePath}"
                     } else {
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo "Building with Maven..."
                 dir("${env.PROJECT_DIR}") {
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo "Running Maven tests..."
                 dir("${env.PROJECT_DIR}") {
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -57,9 +57,9 @@ pipeline {
         stage('Run Cucumber Tests') {
             steps {
                 echo "Running Cucumber tests from shaded JAR..."
-                dir("${env.PROJECT_DIR}/target") {
+                dir("${env.PROJECT_DIR}\\target") {
                     withEnv(["CUCUMBER_PUBLISH_ENABLED=true"]) {
-                        sh 'java -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
+                        bat 'java -jar einovice-bdd-0.0.1-SNAPSHOT-shaded.jar'
                     }
                 }
             }
