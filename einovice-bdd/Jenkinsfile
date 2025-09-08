@@ -1,17 +1,69 @@
 pipeline {
     agent any
 
+    environment {
+        PROJECT_DIR = 'einovice-bdd'
+    }
+
     stages {
-        stage('Check File Path') {
+        stage('Checkout') {
+            steps {
+                echo "Checking out source code..."
+                checkout scm
+            }
+        }
+
+        stage('Validate Jenkinsfile') {
             steps {
                 script {
-                    def path = 'einovice-bdd/Jenkinsfile'
-                    if (fileExists(path)) {
-                        echo "Path exists: ${path}"
+                    def jenkinsfilePath = "${env.PROJECT_DIR}/Jenkinsfile"
+                    if (fileExists(jenkinsfilePath)) {
+                        echo "Jenkinsfile exists at: ${jenkinsfilePath}"
                     } else {
-                        echo "Path does not exist: ${path}"
+                        error "Jenkinsfile not found at: ${jenkinsfilePath}"
                     }
                 }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building with Maven..."
+                dir("${env.PROJECT_DIR}") {
+                    sh 'mvn clean install -DskipTests'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running Maven tests..."
+                dir("${env.PROJECT_DIR}") {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                echo "Archiving artifacts..."
+                dir("${env.PROJECT_DIR}") {
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying application..."
+                // Add your deployment steps here
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                echo "Cleaning workspace..."
+                deleteDir()
             }
         }
     }
