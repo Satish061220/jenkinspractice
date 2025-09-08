@@ -1,1 +1,31 @@
 // Jenkinsfile for CI
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clone the repo
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                // Run Maven build
+                sh 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run Maven tests
+                sh 'mvn test'
+            }
+        }
+        stage('Archive') {
+            steps {
+                // Archive JAR files (if any)
+                archiveArtifacts 'target/*.jar'
+            }
+        }
+    }
+}
