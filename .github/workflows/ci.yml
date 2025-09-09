@@ -23,11 +23,11 @@ jobs:
         java-version: '17'
 
     - name: Build and test with Maven
-      working-directory: einvoice-bdd   # <-- Add this line!
       run: mvn clean verify
+      working-directory: einvoice-bdd
 
     - name: Publish test results (JUnit)
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: einvoice-bdd/target/surefire-reports/*.xml  # Update path accordingly
+        path: einvoice-bdd/target/surefire-reports/*.xml
