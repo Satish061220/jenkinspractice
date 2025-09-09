@@ -24,9 +24,10 @@ jobs:
 
     - name: Build and test with Maven
       run: mvn clean verify
+      working-directory: einvoice-bdd  # 👈 Important fix
 
     - name: Publish test results (JUnit)
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: target/surefire-reports/*.xml
+        path: einvoice-bdd/target/surefire-reports/*.xml  # 👈 Also updated
