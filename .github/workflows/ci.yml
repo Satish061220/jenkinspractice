@@ -24,9 +24,10 @@ jobs:
 
     - name: Build and test with Maven
       run: mvn clean verify
+      working-directory: einovice-bdd  # ✅ Use this to go into the correct subdirectory
 
     - name: Publish test results (JUnit)
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: target/surefire-reports/*.xml
+        path: einovice-bdd/target/surefire-reports/*.xml  # ✅ Correct path
