@@ -2,7 +2,7 @@
 
 package com.einovice;
 
-import io.cucumber.core.cli.Main;//commenting for usual op
+import io.cucumber.core.cli.Main;//commenting for usual opdagag
 
 public class App {
     public static void main(String[] args) {
