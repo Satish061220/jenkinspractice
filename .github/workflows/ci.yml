@@ -1,0 +1,33 @@
+name: Java CI with Maven and Allure
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build and test with Maven
+      run: mvn clean verify
+      working-directory: einovice-bdd  # ✅ Use this to go into the correct subdirectory
+
+    - name: Publish test results (JUnit)
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: einovice-bdd/target/surefire-reports/*.xml  # ✅ Correct path
