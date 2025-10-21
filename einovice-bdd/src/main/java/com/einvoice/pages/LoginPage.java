@@ -1,10 +1,16 @@
 package com.einvoice.pages;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+//import io.cucumber.messages.types.Duration; 
 
 public class LoginPage {
     private WebDriver driver;
+    private WebDriverWait wait1;
 
     
 
@@ -25,6 +31,7 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        wait1 = new WebDriverWait(driver, Duration.ofSeconds(10)); //added wait
     }
 
     public void open() {
