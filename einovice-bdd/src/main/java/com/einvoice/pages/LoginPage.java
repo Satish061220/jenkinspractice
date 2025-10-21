@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 //import io.cucumber.messages.types.Duration; 
@@ -39,10 +40,13 @@ public class LoginPage {
     }
 
     public void login(String user, String pass, String domain) {
-        usernameInput.sendKeys(user);
-        passwordInput.sendKeys(pass);
+    	wait1.until(ExpectedConditions.visibilityOf(usernameInput));
+    	usernameInput.sendKeys(user);
+    	wait1.until(ExpectedConditions.visibilityOf(passwordInput));
+    	passwordInput.sendKeys(pass);
+    	wait1.until(ExpectedConditions.visibilityOf(domainInput));
         domainInput.sendKeys(domain);
-        
+        wait1.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
         
     }
