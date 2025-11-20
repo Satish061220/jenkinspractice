@@ -36,7 +36,7 @@ public class LoginPage {
     }
 
     public void open() {
-        driver.get("https://uatif.advintek.com.my:643/");
+        driver.get("https://aif.advintek.com.my:543/");
     }
 
     public void login(String user, String pass, String domain) {

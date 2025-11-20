@@ -24,7 +24,7 @@ public class LoginSteps {
 
     @When("the user enters valid username and password")
     public void userEntersCredentials() {
-        loginPage.login("SuperAdmin", "admin", "ihh_doctors");
+        loginPage.login("TechSupportLone", "TechSupportL1@2024", "ttmc");
     }
 
     @Then("the user is taken to the dashboard")
